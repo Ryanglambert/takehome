@@ -60,9 +60,12 @@ def distance(str1: str, str2: str):
 
 
 if __name__ == '__main__':
-    print('in module quick tests')
+    print('in module quick tests...')
     assert distance('azced', 'abcdef') == 3
     assert distance('s', 'stuff') == 4
     assert distance('stuffs', 'stuff') == 1
     assert distance('stuff', 'stuff') == 0
     assert distance('cats', 'stacks') == 4
+    assert distance('cat', 'cut') == 1
+    assert distance('geek', 'gesek') == 1
+    assert distance('sunday', 'saturday') == 3
