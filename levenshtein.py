@@ -7,6 +7,18 @@ Each of these counts as "1 unit of distance"
 - Insertions
 - Replacements
 
+I chose to solve this with dynamic programming for two reasons: 
+    - I try to avoid recursion as it is less readable and less pythonic
+    - Dynamic programming avoids recalculating information twice
+
+This is the top down approach. (exhaustive O(N^2))
+We use this approach because it has to be deterministic.
+Although it's O(n^2),
+it's not too much of a concern given that words are typically on
+the order of magnitude of 1s or 10s of letters.
+
+Bottom up would be iterative and approximate. (what is used in reinforcement learning), not what we want.
+
 """
 
 
@@ -29,13 +41,6 @@ def _initialize_position_scores(len_1: int, len_2: int):
 
 def distance(str1: str, str2: str):
     """
-    This problem is best solved as a top down dynamic programming problem. 
-
-    Top down (all combinations) because it has to be deterministic. Although it's O(n^2),
-    it's not too much of a concern given that words are typically on the order of magnitude
-    of 1s or 10s of letters.
-
-    Bottom up would be iterative and approximate. (what is used in reinforcement learning)
     """
     str_1_len = len(str1)
     str_2_len = len(str2)
