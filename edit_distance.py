@@ -11,6 +11,9 @@ Each of these counts as "1 unit of distance"
 
 
 def _initialize_position_scores(len_1: int, len_2: int):
+    "Initializes a dictionary mapping positions in a dp matrix to their corresponding scores"
+    # this is done so in this function so that each character comparison has a
+    # `upper_left`, `upper` and `left` count to use in it's argmin + 1 calculation
     position_scores = {}
 
     # initialize col 0
@@ -25,15 +28,21 @@ def _initialize_position_scores(len_1: int, len_2: int):
 
 
 def distance(str1: str, str2: str):
-    # Goal: What is the levenshtein distance between str1 and str2
     """
     This problem is best solved as a top down dynamic programming problem. 
 
-    Top down (all combinations) because it has to be 
+    Top down (all combinations) because it has to be deterministic. Although it's O(n^2),
+    it's not too much of a concern given that words are typically on the order of magnitude
+    of 1s or 10s of letters.
+
+    Bottom up would be iterative and approximate. (what is used in reinforcement learning)
     """
     str_1_len = len(str1)
     str_2_len = len(str2)
     position_scores = _initialize_position_scores(str_1_len, str_2_len)
+    # since row 0 and col 0 are initialized with distances from a null character
+    # it's appropriate for the indices in enumerate to start at
+    # 1 instead of 0.
     for i, letter_1 in enumerate(str1, start=1):
         for j, letter_2 in enumerate(str2, start=1):
             if letter_1 != letter_2:
