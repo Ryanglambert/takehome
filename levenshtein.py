@@ -1,12 +1,14 @@
 """
+##### Problem #####
 levenshtein distance between two strings
 
 Types of operations allowed in computing levenshtein distance
 
 Each of these counts as "1 unit of distance"
-- Insertions
-- Replacements
+    - Insertions
+    - Replacements
 
+##### Solution ####
 I chose to solve this with dynamic programming for two reasons: 
     - I try to avoid recursion as it is less readable and less pythonic
     - Dynamic programming avoids recalculating information twice
